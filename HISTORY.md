@@ -1,3 +1,31 @@
+Version 1.2
+===========
+October 5, 2018
+
++ Simplified adding new languages by extracting language-specific cleanup into separate class
+  (contribution by [fabrichter](https://github.com/fabrichter))
++ Added basic support for 13 languages:
+    * French
+    * Breton
+    * Catalan
+    * Greek
+    * Esperanto
+    * Spanish
+    * Galician
+    * Italian
+    * Dutch
+    * Polish
+    * Portuguese
+    * Russian
+    * Ukrainian
+
+
+Version 1.1
+===========
+June 17, 2018
+
++ Added support for Kannada (contribution by [shivahr](https://github.com/shivahr))
+
 Version 1.0
 ===========
 June 14, 2017

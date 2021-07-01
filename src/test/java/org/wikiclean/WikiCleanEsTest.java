@@ -16,25 +16,34 @@
 
 package org.wikiclean;
 
+import junit.framework.JUnit4TestAdapter;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
-import org.wikiclean.WikiClean.WikiLanguage;
-import org.wikiclean.languages.Chinese;
+import org.wikiclean.languages.Catalan;
+import org.wikiclean.languages.Spanish;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.assertFalse;
 
-public class WikiCleanZhTest {
+public class WikiCleanEsTest {
+
   @Test
-  public void testZhId13() throws IOException {
-    String raw = FileUtils.readFileToString(new File("src/test/resources/zhwiki-20150423-id13.xml"), "UTF-8");
-    WikiClean cleaner = new WikiClean.Builder().withLanguage(new Chinese()).build();
+  public void testArticle() throws Exception {
+    String raw = FileUtils.readFileToString(new File("src/test/resources/eswiki-test.xml"), "UTF-8");
+    WikiClean cleaner = new WikiClean.Builder().withLanguage(new Spanish()).build();
     String content = cleaner.clean(raw);
     //System.out.println(content);
-    //Make sure we've removed category links
-    assertFalse(content.contains("Category:数学"));
+
+    // Make sure categories are removed properly.
+    assertFalse(content.contains("Categoría:Sociedad de Andorra"));
+
+    // Make sure footer is removed properly.
+    assertFalse(content.contains("Referencias"));
   }
 
+
+  public static junit.framework.Test suite() {
+    return new JUnit4TestAdapter(WikiCleanEsTest.class);
+  }
 }
